@@ -48,10 +48,6 @@ const navItems = [
 
     <div class="page-shell">
       <header class="topbar reveal">
-        <a class="brand" href={withBase()} aria-label={`${siteMeta.title} home`}>
-          <span class="brand-mark" aria-hidden="true">Home</span>
-        </a>
-
         <nav class="main-nav" aria-label="Primary">
           {navItems.map((item) => {
             const itemPath = item.external ? '' : normalizePath(item.href);
