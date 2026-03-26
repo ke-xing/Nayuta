@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '../../components/PostCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<BaseLayout title="博客 | Nayuta" description="Nayuta 的全部技术文章">
+  <section class="page-hero reveal">
+    <p class="eyebrow">BLOG INDEX</p>
+    <h1>文章列表</h1>
+    <p class="hero-text">
+      这里收纳的是偏工程实践与系统思考的写作，适合作为个人知识库、项目复盘区和长期沉淀空间。
+    </p>
+  </section>
+
+  <section class="section-block reveal">
+    <div class="post-grid">
+      {posts.map((post, index) => <PostCard post={post} featured={index === 0} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../utils/date';
+import { withBase } from '../utils/paths';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const href = withBase(`/blog/${post.slug}/`);
+---
+
+<article
+  class:list={['post-card', { 'post-card-featured': featured }]}
+  style={`--card-accent: ${post.data.accent ?? '#0f766e'}`}
+>
+  <div class="post-card-topline">
+    <span>{formatDate(post.data.publishDate)}</span>
+    <span>{post.data.readingTime ?? '5 min'}</span>
+  </div>
+  <h3>
+    <a href={href}>{post.data.title}</a>
+  </h3>
+  <p>{post.data.summary}</p>
+  <div class="post-card-footer">
+    <ul class="tag-list" aria-label="文章标签">
+      {post.data.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+    <a class="text-link" href={href}>
+      阅读全文
+    </a>
+  </div>
+</article>

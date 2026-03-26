@@ -1,0 +1,29 @@
+{
+  "name": "nayuta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal tech blog built with Astro and ready for GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "keywords": [
+    "astro",
+    "blog",
+    "github-pages",
+    "personal-site"
+  ],
+  "author": "Oryxx <1527523751@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^5.14.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.9.3"
+  }
+}

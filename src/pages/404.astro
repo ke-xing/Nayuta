@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+---
+
+<BaseLayout title="页面未找到 | Nayuta">
+  <section class="page-hero reveal">
+    <p class="eyebrow">404</p>
+    <h1>这页还没有被写出来。</h1>
+    <p class="hero-text">可能是链接写错了，也可能是这篇笔记还在草稿区。先回到首页继续逛逛吧。</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href={withBase()}>返回首页</a>
+      <a class="button button-secondary" href={withBase('/blog/')}>浏览博客</a>
+    </div>
+  </section>
+</BaseLayout>

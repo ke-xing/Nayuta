@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import { siteMeta } from '../site.config';
+import { withBase } from '../utils/paths';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageClass?: string;
+}
+
+const {
+  title = `${siteMeta.title} | ${siteMeta.subtitle}`,
+  description = siteMeta.description,
+  pageClass = '',
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const navItems = [
+  { label: '首页', href: withBase() },
+  { label: '博客', href: withBase('/blog/') },
+  { label: 'GitHub', href: siteMeta.github },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    {canonical && <link rel="canonical" href={canonical} />}
+  </head>
+  <body class={pageClass}>
+    <a class="skip-link" href="#content">跳到正文</a>
+    <div class="page-shell">
+      <div class="background-grid" aria-hidden="true"></div>
+      <div class="orb orb-a" aria-hidden="true"></div>
+      <div class="orb orb-b" aria-hidden="true"></div>
+
+      <header class="site-header">
+        <a class="brand" href={withBase()}>
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>{siteMeta.title}</strong>
+            <small>{siteMeta.subtitle}</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+          {navItems.map((item) => (
+            <a href={item.href} target={item.label === 'GitHub' ? '_blank' : undefined} rel="noreferrer">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <main id="content">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p>© {new Date().getFullYear()} {siteMeta.author}. Built with Astro, deployed on GitHub Pages.</p>
+      </footer>
+    </div>
+  </body>
+</html>
