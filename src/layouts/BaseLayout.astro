@@ -16,10 +16,12 @@ const {
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const normalizePath = (value: string) => (value.endsWith('/') ? value : `${value}/`);
+const currentPath = normalizePath(Astro.url.pathname);
 const navItems = [
-  { label: 'Home', href: withBase() },
-  { label: 'Journal', href: withBase('/blog/') },
-  { label: 'GitHub', href: siteMeta.github },
+  { label: 'Home', href: withBase(), external: false },
+  { label: 'Journal', href: withBase('/blog/'), external: false },
+  { label: 'GitHub', href: siteMeta.github, external: true },
 ];
 ---
 
@@ -47,19 +49,27 @@ const navItems = [
     <div class="page-shell">
       <header class="topbar reveal">
         <a class="brand" href={withBase()} aria-label={`${siteMeta.title} home`}>
-          <span class="brand-mark" aria-hidden="true">N</span>
+          <span class="brand-mark" aria-hidden="true">Home</span>
         </a>
 
         <nav class="main-nav" aria-label="Primary">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              target={item.label === 'GitHub' ? '_blank' : undefined}
-              rel={item.label === 'GitHub' ? 'noreferrer' : undefined}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const itemPath = item.external ? '' : normalizePath(item.href);
+            const isActive =
+              !item.external &&
+              (item.label === 'Home' ? currentPath === itemPath : currentPath.startsWith(itemPath));
+
+            return (
+              <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noreferrer' : undefined}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
       </header>
 
