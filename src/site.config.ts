@@ -24,4 +24,7 @@ export const siteMeta = {
     'Personal Operating System':
       'Frameworks for planning, execution, and decision quality in solo engineering work.',
   },
+  analytics: {
+    visitorMapId: 'ke-xing-nayuta-visitors',
+  },
 };
