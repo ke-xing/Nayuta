@@ -4,6 +4,7 @@ import PostCard from '../components/PostCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteMeta } from '../site.config';
 import { slugifyCategory } from '../utils/category';
+import { withBase } from '../utils/paths';
 
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -19,8 +20,21 @@ const years = Array.from(new Set(allPosts.map((post) => String(post.data.publish
 
 <BaseLayout>
   <section class="intro-panel reveal">
-    <p class="intro-kicker">PERSONAL PROFILE</p>
-    <h1 class="intro-title">{siteMeta.profile.name} / {siteMeta.profile.role}</h1>
+    <div class="intro-head">
+      <img
+        class="intro-avatar"
+        src={withBase('/avatar.jpg')}
+        alt="Avatar of ke-xing"
+        width="92"
+        height="92"
+        loading="eager"
+        decoding="async"
+      />
+      <div class="intro-head-copy">
+        <p class="intro-kicker">PERSONAL PROFILE</p>
+        <h1 class="intro-title">{siteMeta.profile.name} / {siteMeta.profile.role}</h1>
+      </div>
+    </div>
     <p class="intro-summary">{siteMeta.profile.intro}</p>
     <p class="intro-summary">{siteMeta.profile.summary}</p>
 
