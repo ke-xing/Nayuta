@@ -12,23 +12,23 @@ const featuredPost = allPosts.find((post) => post.data.featured) ?? allPosts[0];
 const latestPosts = allPosts.filter((post) => post.slug !== featuredPost.slug).slice(0, 2);
 
 const metrics = [
-  ['03', '示例文章', '已经内置 Markdown 内容和技术主题结构'],
-  ['01', '自动部署链路', '推送到 main 后即可通过 GitHub Actions 发布'],
-  ['∞', '长期写作空间', '适合持续沉淀经验、方案复盘和学习笔记'],
+  ['01', '博客已上线', '项目已经接入 GitHub Pages 自动部署，后续写完就能直接发。'],
+  ['03', '起步文章', '先把开站说明、技术选型和写作计划沉淀下来。'],
+  ['2026', '持续更新中', '这里会逐步记录开发过程、工具使用和个人项目复盘。'],
 ];
 
 const principles = [
   {
-    title: '偏长期主义',
-    detail: '记录那些可以反复复用的工程方法，而不是只追逐短期热点。',
+    title: '把过程写清楚',
+    detail: '不仅记录结论，也把当时的背景、取舍和踩坑过程一起留下来。',
   },
   {
-    title: '偏实战细节',
-    detail: '每篇文章都鼓励用代码、配置和取舍分析来支撑观点。',
+    title: '把实践写具体',
+    detail: '尽量用代码、配置和真实场景复盘，而不是停留在抽象观点里。',
   },
   {
-    title: '偏系统思考',
-    detail: '把单点技巧放回更大的系统里讨论，避免局部最优。',
+    title: '把积累做长期',
+    detail: '希望这个站点慢慢变成一份能持续回看的个人技术档案。',
   },
 ];
 ---
@@ -36,11 +36,11 @@ const principles = [
 <BaseLayout>
   <section class="hero reveal">
     <div class="hero-copy">
-      <p class="eyebrow">PERSONAL TECH BLOG / GITHUB PAGES READY</p>
-      <h1>把工程实践写成可以复用的经验。</h1>
+      <p class="eyebrow">KE-XING / TECH NOTES / BUILT WITH ASTRO</p>
+      <h1>记录我正在构建的东西，也记录它为什么这样构建。</h1>
       <p class="hero-text">
-        {siteMeta.title} 是一个面向长期积累的个人技术博客模板，适合持续发布前端工程化、系统设计、
-        AI 协作流和日常研发方法论。
+        {siteMeta.title} 是我的个人技术博客。这里会持续更新前端开发、自动化脚本、AI 工具协作、
+        以及个人项目从想法到落地的过程记录。
       </p>
 
       <div class="hero-actions">
@@ -73,7 +73,7 @@ const principles = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">FEATURED NOTE</p>
-        <h2>本周主打文章</h2>
+        <h2>从这篇开始认识这个站点</h2>
       </div>
       <a class="text-link" href={withBase('/blog/')}>查看全部文章</a>
     </div>
@@ -85,7 +85,7 @@ const principles = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">LATEST WRITING</p>
-        <h2>最近发布</h2>
+        <h2>最新更新</h2>
       </div>
     </div>
 
@@ -98,7 +98,7 @@ const principles = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">EDITORIAL PRINCIPLES</p>
-        <h2>写作取向</h2>
+        <h2>我希望这里慢慢长成的样子</h2>
       </div>
     </div>
 
