@@ -1,20 +1,20 @@
 export const siteMeta = {
-  title: 'Nayuta',
-  subtitle: 'Independent engineering notes by ke-xing',
+  title: 'X-Site',
+  subtitle: 'Personal blog',
   description:
-    'An independent journal on software engineering, product execution, and AI-assisted systems.',
-  author: 'ke-xing',
-  email: '1527523751@qq.com',
+    "Share something I'm thinking",
+  author: 'Nayuta',
+  email: 'kexing-kx@foxmail.com',
   github: 'https://github.com/ke-xing',
   profile: {
-    name: 'ke-xing',
-    role: 'Independent Engineer and Builder',
+    name: 'Nayuta',
+    role: 'AI Researcher',
     intro:
-      'I design and ship software products with a bias toward clarity, speed, and strong execution discipline.',
+      'Hi, there. I\'m an AI researcher specifically on World Models.',
     summary:
-      'This site is my public working notebook: architecture decisions, automation workflows, project retrospectives, and writing systems that compound over time.',
-    location: 'Shanghai / Remote',
-    links: ['GitHub: github.com/ke-xing', 'Focus: Product Engineering, AI Workflows, Writing Systems'],
+      'This site is my public working notebook',
+    location: 'Beijing',
+    links: ['GitHub: github.com/ke-xing', 'Focus: World Models, Visual Memory'],
   },
   categoryDescriptions: {
     'Engineering Systems':
