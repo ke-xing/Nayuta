@@ -1,0 +1,56 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import PostCard from '../../../components/PostCard.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { siteMeta } from '../../../site.config';
+import { slugifyCategory } from '../../../utils/category';
+import { withBase } from '../../../utils/paths';
+
+interface Props {
+  category: string;
+  posts: CollectionEntry<'blog'>[];
+}
+
+export async function getStaticPaths() {
+  const allPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+  );
+
+  const grouped = new Map<string, CollectionEntry<'blog'>[]>();
+
+  for (const post of allPosts) {
+    const key = post.data.category;
+    const bucket = grouped.get(key) ?? [];
+    bucket.push(post);
+    grouped.set(key, bucket);
+  }
+
+  return Array.from(grouped.entries()).map(([category, posts]) => ({
+    params: { category: slugifyCategory(category) },
+    props: { category, posts },
+  }));
+}
+
+const { category, posts } = Astro.props as Props;
+const pageTitle = `${category} | Journal | ${siteMeta.title}`;
+const description =
+  (siteMeta.categoryDescriptions as Record<string, string>)[category] ??
+  `All entries currently under the category "${category}".`;
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <section class="category-header reveal">
+    <a class="back-link" href={withBase('/blog/')}>Back to categories</a>
+    <p class="eyebrow">CATEGORY ARCHIVE</p>
+    <h1>{category}</h1>
+    <p class="hero-text">{description}</p>
+  </section>
+
+  <ul class="post-feed reveal" aria-label={`${category} posts`}>
+    {posts.map((post) => (
+      <li class="feed-item">
+        <PostCard post={post} />
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

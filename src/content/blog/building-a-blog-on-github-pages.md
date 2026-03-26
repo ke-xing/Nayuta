@@ -1,6 +1,7 @@
 ---
 title: Building a Durable Blog with Astro and GitHub Pages
 summary: The objective was not a one-week demo. The objective was a publishing system that remains effortless to maintain.
+category: Engineering Systems
 publishDate: 2026-03-25
 updatedDate: 2026-03-26
 tags:
@@ -9,7 +10,7 @@ tags:
   - Static Architecture
 featured: false
 readingTime: 6 min
-accent: "#8b6a3c"
+accent: "#ffffff"
 ---
 
 A technical publication should start with operational discipline. Fancy features can come later. Reliability cannot.

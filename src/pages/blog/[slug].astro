@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { siteMeta } from '../../site.config';
+import { slugifyCategory } from '../../utils/category';
 import { formatDate } from '../../utils/date';
 import { withBase } from '../../utils/paths';
 
@@ -16,12 +17,18 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { Content, headings } = await post.render();
+const categorySlug = slugifyCategory(post.data.category);
+const categoryHref = withBase(`/blog/category/${categorySlug}/`);
 const pageTitle = `${post.data.title} | ${siteMeta.title}`;
 ---
 
 <BaseLayout title={pageTitle} description={post.data.summary} pageClass="article-page">
   <section class="article-hero reveal">
-    <a class="back-link" href={withBase('/blog/')}>Back to journal</a>
+    <div class="article-utility">
+      <a class="back-link" href={withBase('/blog/')}>Back to categories</a>
+      <a class="category-chip" href={categoryHref}>{post.data.category}</a>
+    </div>
+
     <p class="eyebrow">ARTICLE</p>
     <h1>{post.data.title}</h1>
     <p class="hero-text">{post.data.summary}</p>

@@ -1,26 +1,69 @@
 ---
 import { getCollection } from 'astro:content';
-import PostCard from '../../components/PostCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteMeta } from '../../site.config';
+import { slugifyCategory } from '../../utils/category';
+import { formatDate } from '../../utils/date';
+import { withBase } from '../../utils/paths';
 
-const posts = (await getCollection('blog')).sort(
+const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
+
+const grouped = new Map<string, typeof allPosts>();
+
+for (const post of allPosts) {
+  const key = post.data.category;
+  const bucket = grouped.get(key) ?? [];
+  bucket.push(post);
+  grouped.set(key, bucket);
+}
+
+const modules = Array.from(grouped.entries())
+  .map(([category, posts]) => ({
+    category,
+    slug: slugifyCategory(category),
+    posts,
+    latest: posts[0],
+    description:
+      (siteMeta.categoryDescriptions as Record<string, string>)[category] ??
+      'A curated set of notes and article drafts for this category.',
+  }))
+  .sort((a, b) => b.posts.length - a.posts.length || a.category.localeCompare(b.category));
 ---
 
-<BaseLayout title="Journal | Nayuta" description="All technical essays by ke-xing">
-  <section class="page-hero reveal">
-    <p class="eyebrow">PUBLICATION INDEX</p>
-    <h1>Journal</h1>
+<BaseLayout title="Journal | Nayuta" description="Browse all posts by category">
+  <section class="journal-header reveal">
+    <p class="eyebrow">CATEGORY NAVIGATION</p>
+    <h1>Journal Categories</h1>
     <p class="hero-text">
-      Essays on software architecture, elite execution habits, AI-assisted workflows, and decision quality in
-      modern product teams.
+      Pick a category module below. Each module leads to a flat list of all related articles.
     </p>
   </section>
 
-  <section class="section-block reveal">
-    <div class="post-grid">
-      {posts.map((post, index) => <PostCard post={post} featured={index === 0} />)}
-    </div>
+  <section class="category-grid reveal" aria-label="Categories">
+    {modules.map((module) => (
+      <article class="category-module">
+        <div class="module-head">
+          <h2>{module.category}</h2>
+          <span class="module-count">{module.posts.length} posts</span>
+        </div>
+
+        <p class="module-description">{module.description}</p>
+        <p class="module-meta">Latest: {formatDate(module.latest.data.publishDate)}</p>
+
+        <ul class="module-preview">
+          {module.posts.slice(0, 3).map((post) => (
+            <li>
+              <a href={withBase(`/blog/${post.slug}/`)}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+
+        <a class="module-link" href={withBase(`/blog/category/${module.slug}/`)}>
+          Open {module.category}
+        </a>
+      </article>
+    ))}
   </section>
 </BaseLayout>

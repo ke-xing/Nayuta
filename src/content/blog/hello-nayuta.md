@@ -1,6 +1,7 @@
 ---
 title: Why Nayuta Exists
 summary: "This first entry defines the standard for the journal: fewer posts, higher signal, and practical engineering depth."
+category: Editorial Strategy
 publishDate: 2026-03-26
 updatedDate: 2026-03-26
 tags:
@@ -9,7 +10,7 @@ tags:
   - Personal Systems
 featured: true
 readingTime: 5 min
-accent: "#0c4a6e"
+accent: "#ffffff"
 ---
 
 I did not build this site to be a static profile page. I built it to become a working archive of how I make technical decisions.

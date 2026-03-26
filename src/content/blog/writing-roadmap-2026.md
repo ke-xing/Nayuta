@@ -1,6 +1,7 @@
 ---
 title: Editorial Roadmap for 2026
 summary: A publication survives on cadence and focus. This roadmap defines what I will write before the year expands in scope.
+category: Personal Operating System
 publishDate: 2026-03-24
 tags:
   - Strategy
@@ -8,7 +9,7 @@ tags:
   - Learning Systems
 featured: false
 readingTime: 4 min
-accent: "#334155"
+accent: "#ffffff"
 ---
 
 Most blogs do not fail because of skill. They fail because their topic surface is too broad and their rhythm is undefined.
