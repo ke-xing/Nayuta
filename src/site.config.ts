@@ -13,8 +13,8 @@ export const siteMeta = {
       'Hi, there. I\'m an AI researcher specifically on World Models.',
     summary:
       'This site is my public working notebook',
-    location: 'Beijing',
-    links: ['GitHub: github.com/ke-xing', 'Focus: World Models, Visual Memory'],
+    // location: 'Beijing',
+    // links: ['GitHub: github.com/ke-xing', 'Focus: World Models, Visual Memory'],
   },
   categoryDescriptions: {
     'Engineering Systems':
