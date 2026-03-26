@@ -14,7 +14,7 @@ const href = withBase(`/blog/${post.slug}/`);
 
 <article
   class:list={['post-card', { 'post-card-featured': featured }]}
-  style={`--card-accent: ${post.data.accent ?? '#0c4a6e'}`}
+  style="--card-accent: rgba(248, 250, 252, 0.72)"
 >
   <div class="post-card-topline">
     <span>{formatDate(post.data.publishDate)}</span>
