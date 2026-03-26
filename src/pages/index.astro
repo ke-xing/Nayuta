@@ -16,6 +16,11 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
 const years = Array.from(new Set(allPosts.map((post) => String(post.data.publishDate.getFullYear())))).sort(
   (a, b) => Number(b) - Number(a),
 );
+const profile = siteMeta.profile as typeof siteMeta.profile & {
+  location?: string;
+  links?: string[];
+};
+const profileLinks = profile.links ?? [];
 ---
 
 <BaseLayout>
@@ -32,15 +37,15 @@ const years = Array.from(new Set(allPosts.map((post) => String(post.data.publish
       />
       <div class="intro-head-copy">
         <p class="intro-kicker">PERSONAL PROFILE</p>
-        <h2 class="intro-title">{siteMeta.profile.name} / {siteMeta.profile.role}</h2>
+        <h2 class="intro-title">{profile.name}</h2>
       </div>
     </div>
-    <p class="intro-summary">{siteMeta.profile.intro}</p>
-    <p class="intro-summary">{siteMeta.profile.summary}</p>
+    <p class="intro-summary">{profile.intro}</p>
+    <p class="intro-summary">{profile.summary}</p>
 
     <div class="intro-meta">
-      <span>{siteMeta.profile.location}</span>
-      {siteMeta.profile.links.map((item) => <span>{item}</span>)}
+      {profile.location && <span>{profile.location}</span>}
+      {profileLinks.map((item) => <span>{item}</span>)}
       <a href={siteMeta.github} target="_blank" rel="noreferrer">
         Open GitHub
       </a>
