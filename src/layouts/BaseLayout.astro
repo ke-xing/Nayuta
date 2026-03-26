@@ -46,11 +46,8 @@ const navItems = [
 
     <div class="page-shell">
       <header class="topbar reveal">
-        <a class="brand" href={withBase()}>
-          <span class="brand-copy">
-            <strong>{siteMeta.title}</strong>
-            <small>{siteMeta.subtitle}</small>
-          </span>
+        <a class="brand" href={withBase()} aria-label={`${siteMeta.title} home`}>
+          <span class="brand-mark" aria-hidden="true">N</span>
         </a>
 
         <nav class="main-nav" aria-label="Primary">

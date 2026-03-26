@@ -133,6 +133,9 @@ main {
 }
 
 .topbar,
+.home-layout,
+.home-sidebar,
+.home-feed,
 .intro-panel,
 .filter-bar,
 .post-feed,
@@ -164,7 +167,8 @@ main {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.72rem;
+  gap: 0;
+  flex-shrink: 0;
 }
 
 .brand-mark {
@@ -180,26 +184,10 @@ main {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
 }
 
-.brand-copy {
-  display: grid;
-  gap: 0.08rem;
-}
-
-.brand-copy strong {
-  font-size: 0.97rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.brand-copy small {
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-
 .main-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.28rem;
+  gap: 0.24rem;
 }
 
 .main-nav a {
@@ -222,6 +210,30 @@ main {
   border-color: var(--line);
   background: rgba(255, 255, 255, 0.64);
   transform: translateY(-1px);
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
+  gap: 0.95rem;
+  align-items: start;
+}
+
+.home-sidebar {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+  position: sticky;
+  top: 1rem;
+}
+
+.home-feed {
+  min-width: 0;
+}
+
+.home-feed .post-feed {
+  grid-template-columns: 1fr;
+  gap: 0.78rem;
 }
 
 .intro-panel,
@@ -364,10 +376,21 @@ main {
   gap: 0.6rem;
 }
 
+.home-sidebar .filter-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.52rem;
+  align-items: stretch;
+}
+
 .filter-field {
   display: grid;
   gap: 0.24rem;
   min-width: 180px;
+}
+
+.home-sidebar .filter-field {
+  min-width: 100%;
 }
 
 .filter-label {
@@ -396,6 +419,10 @@ main {
   padding: 0.5rem 0.9rem;
   font-weight: 600;
   cursor: pointer;
+}
+
+.home-sidebar .filter-reset {
+  width: 100%;
 }
 
 .filter-select:focus-visible,
@@ -813,10 +840,16 @@ main {
 }
 
 @media (max-width: 1020px) {
+  .home-layout,
   .post-feed,
   .category-grid,
   .article-layout {
     grid-template-columns: 1fr;
+  }
+
+  .home-sidebar {
+    position: static;
+    top: auto;
   }
 
   .topbar {
@@ -841,6 +874,10 @@ main {
   .main-nav {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .home-sidebar .filter-controls {
+    grid-template-columns: 1fr;
   }
 
   .filter-field {
