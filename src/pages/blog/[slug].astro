@@ -21,7 +21,7 @@ const pageTitle = `${post.data.title} | ${siteMeta.title}`;
 
 <BaseLayout title={pageTitle} description={post.data.summary} pageClass="article-page">
   <section class="article-hero reveal">
-    <a class="back-link" href={withBase('/blog/')}>返回文章列表</a>
+    <a class="back-link" href={withBase('/blog/')}>Back to journal</a>
     <p class="eyebrow">ARTICLE</p>
     <h1>{post.data.title}</h1>
     <p class="hero-text">{post.data.summary}</p>
@@ -29,10 +29,10 @@ const pageTitle = `${post.data.title} | ${siteMeta.title}`;
     <div class="article-meta">
       <span>{formatDate(post.data.publishDate)}</span>
       <span>{post.data.readingTime ?? '5 min'}</span>
-      {post.data.updatedDate && <span>更新于 {formatDate(post.data.updatedDate)}</span>}
+      {post.data.updatedDate && <span>Updated {formatDate(post.data.updatedDate)}</span>}
     </div>
 
-    <ul class="tag-list" aria-label="文章标签">
+    <ul class="tag-list" aria-label="Article tags">
       {post.data.tags.map((tag) => <li>{tag}</li>)}
     </ul>
   </section>
@@ -40,7 +40,7 @@ const pageTitle = `${post.data.title} | ${siteMeta.title}`;
   <section class="article-layout reveal">
     {headings.length > 0 && (
       <aside class="toc-card panel">
-        <p class="panel-label">ON THIS PAGE</p>
+        <p class="panel-label">On this page</p>
         <ol>
           {headings.map((heading) => (
             <li>

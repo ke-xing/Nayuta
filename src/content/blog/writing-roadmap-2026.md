@@ -1,42 +1,30 @@
 ---
-title: 2026 写作计划：我准备在这里记录什么
-summary: 与其空着等“有空再写”，不如先明确接下来准备记录的主题，让这个博客真正开始运转。
+title: Editorial Roadmap for 2026
+summary: A publication survives on cadence and focus. This roadmap defines what I will write before the year expands in scope.
 publishDate: 2026-03-24
 tags:
-  - 写作计划
-  - 个人项目
-  - 学习记录
+  - Strategy
+  - Personal Projects
+  - Learning Systems
 featured: false
 readingTime: 4 min
-accent: "#e11d48"
+accent: "#334155"
 ---
 
-很多博客不是因为没人想写而停住，而是因为一开始没有明确“准备写什么”。所以我给自己列一个尽量朴素但可执行的写作清单。
+Most blogs do not fail because of skill. They fail because their topic surface is too broad and their rhythm is undefined.
 
-## 第一类：个人项目日志
+## Track 1: Project execution logs
 
-我希望把一些项目从想法、搭建、重构到上线的过程写下来。哪怕只是小项目，它们也很适合作为整理思路的出口。
+These entries capture projects from idea to release, including architecture choices, tooling, and mistakes worth preserving.
 
-## 第二类：开发过程里的小工具
+## Track 2: Tooling and automation notes
 
-很多提升效率的东西，其实不是什么大系统，而是一些脚本、模板和自动化动作。我很想把这些零散积累整理成文章。
+A large part of engineering leverage comes from small internal tools. I will document scripts, templates, and prompts that materially improve throughput.
 
-可能会包括：
+## Track 3: Decision retrospectives
 
-- 本地开发提效脚本
-- 代码生成与项目初始化流程
-- 和 AI 协作时常用的提示模板或工作方式
+When a direction is chosen, alternatives are dropped. Those tradeoffs should be explicit, so future work benefits from past reasoning instead of repeating it.
 
-## 第三类：技术选型与复盘
+## Operating rule
 
-每做一个项目，都会遇到“为什么选这个、不选那个”的问题。这些取舍如果不写下来，很快就会忘记。
-
-所以我也想把一些简单但真实的复盘留在这里，比如：
-
-- 为什么某个方案最后被放弃
-- 哪个工具在实际使用里没有预期那么顺手
-- 某次重构真正带来的收益和代价
-
-## 先开始，比规划完美更重要
-
-这个计划以后一定会变化，但没关系。只要站点开始持续更新，它就已经比停留在“以后有机会再写”更进一步了。
+Consistency matters more than volume. One durable post per week is more valuable than five lightweight updates with no lasting utility.

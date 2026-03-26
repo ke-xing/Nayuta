@@ -1,58 +1,44 @@
 ---
-title: 用 Astro 和 GitHub Pages 搭一个能长期维护的个人博客
-summary: 我想要的不是一次性搭完就结束的页面，而是一套以后还能轻松继续写、继续发的博客结构。
+title: Building a Durable Blog with Astro and GitHub Pages
+summary: The objective was not a one-week demo. The objective was a publishing system that remains effortless to maintain.
 publishDate: 2026-03-25
 updatedDate: 2026-03-26
 tags:
   - Astro
   - GitHub Pages
-  - 静态网站
+  - Static Architecture
 featured: false
 readingTime: 6 min
-accent: "#f97316"
+accent: "#8b6a3c"
 ---
 
-技术博客最好从一个足够轻、足够稳的方案开始。功能太重，前期会被折腾分心；结构太随意，后期又很难继续维护。
+A technical publication should start with operational discipline. Fancy features can come later. Reliability cannot.
 
-## 为什么选 Astro
+## Why Astro
 
-我最后选择 Astro，原因很直接：
+Astro gives a clean split between presentation and content. That model scales well for a journal:
 
-- 默认就是很适合内容型站点的静态输出
-- 组件和内容系统分得清楚，后续扩展不乱
-- Markdown 支持自然，写文章不需要额外折腾
+- writing in Markdown
+- strongly typed frontmatter
+- static output that is fast and predictable
+- straightforward layout customization
 
-对个人博客来说，这些优点比“能不能做超复杂交互”更重要。
+## Why GitHub Pages
 
-## 为什么放在 GitHub Pages
+For this project, deployment had to be nearly invisible. GitHub Pages fits that requirement:
 
-GitHub Pages 很适合这种个人项目：
+- source and deployment live in one repository
+- GitHub Actions publishes on each push to main
+- operating cost is effectively zero
+- maintenance burden stays low
 
-1. 仓库和站点放在一起，结构清楚。
-2. 用 GitHub Actions 自动部署，推送后就能发布。
-3. 成本很低，维护路径简单。
+## Minimum architecture, maximum longevity
 
-这类项目最怕的是上线门槛太高，导致以后懒得更新。部署越轻，写作越容易持续。
+The initial version only needed four capabilities:
 
-## 我希望这个项目具备的能力
+1. A homepage with clear editorial positioning.
+2. A journal index for chronological browsing.
+3. Individual article pages with metadata and readability.
+4. A zero-friction deployment pipeline.
 
-现阶段我更在意这些基础能力：
-
-- 首页能快速表达站点定位
-- 文章列表和详情页结构清楚
-- 文章直接用 Markdown 管理
-- 仓库推送后自动部署到 Pages
-
-这些看起来不花哨，但正是决定一个博客能不能真的长期写下去的部分。
-
-## 后续可以慢慢加的功能
-
-等内容稍微多一点以后，我可能会继续补：
-
-- 标签筛选
-- 搜索
-- 相关文章推荐
-- 草稿管理
-- 自定义域名与 SEO 细化
-
-先把可写、可发、可维护做好，比一开始就追求大而全更重要。
+Everything else can evolve after real usage signals emerge.

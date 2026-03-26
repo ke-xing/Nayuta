@@ -1,53 +1,41 @@
 ---
-title: 你好，Nayuta：为什么我要重新开始写技术博客
-summary: 这是这个站点的第一篇文章，也是一份开场白。我想把个人项目、技术实践和思考过程认真留下来。
+title: Why Nayuta Exists
+summary: "This first entry defines the standard for the journal: fewer posts, higher signal, and practical engineering depth."
 publishDate: 2026-03-26
 updatedDate: 2026-03-26
 tags:
-  - 开站记录
-  - 技术写作
-  - 个人博客
+  - Editorial Direction
+  - Technical Writing
+  - Personal Systems
 featured: true
 readingTime: 5 min
-accent: "#0f766e"
+accent: "#0c4a6e"
 ---
 
-如果只是为了“有一个主页”，其实做一个简单 landing page 就够了。但我还是决定把它做成博客，因为我更想留下过程，而不只是结果。
+I did not build this site to be a static profile page. I built it to become a working archive of how I make technical decisions.
 
-## 为什么重新开始写
+## The intent
 
-过去很多经验都停留在聊天窗口、临时备忘录和零散代码仓库里。它们当时有用，但过一段时间以后，就很难再回头复用。
+Over time, good engineering insights get buried in chats, pull request comments, and scattered notes. The context that mattered then becomes inaccessible when it matters again.
 
-我想把这个站点变成一个更稳定的出口，用来记录：
+This publication solves that by forcing structure around each idea:
 
-- 做个人项目时真实遇到的问题
-- 为了提高效率写下来的脚本和工具
-- 使用 AI 协作开发时有效和无效的方式
-- 一些值得回看的技术取舍和阶段性总结
+1. What problem actually existed?
+2. What options were available?
+3. Why was this path selected?
+4. How would we reverse it if needed?
 
-## 我希望这里不只是“展示页”
+## Why this format
 
-我不太想把它做成只放头像、标签和几个链接的名片式页面。相比之下，我更喜欢它是一块能持续生长的地方。
+I want the journal to be practical, not performative. Posts should be readable by a future teammate, a future client, or my future self without additional context.
 
-以后每写完一篇文章，哪怕只是一次小复盘，它都能让这个站点更像一个真正的工作台，而不是静态履历。
+The standard is simple:
 
-## Nayuta 这个项目的起点
+- concise framing
+- concrete implementation detail
+- explicit tradeoff analysis
+- reusable lessons
 
-这个博客目前使用 Astro 搭建，并准备直接托管到 GitHub Pages。选择这种方案有几个很现实的原因：
+## The long game
 
-1. 成本低，部署链路也足够简单。
-2. 静态站点对个人博客来说很稳，维护负担小。
-3. Markdown 写作体验直接，适合长期积累。
-
-它不一定是功能最复杂的方案，但很适合作为一个长期写作工程的起点。
-
-## 接下来准备写什么
-
-开站之后，我会优先补这几类内容：
-
-- 这个博客本身的搭建与部署记录
-- 正在做的个人项目与开发日志
-- 前端与自动化相关的小型实践总结
-- AI 工具在实际开发流里的用法与边界
-
-如果几年后我回来看，希望这里留下的不只是“我做过什么”，而是“我当时是怎么一步步做成的”。
+Nayuta is meant to compound. Each entry should increase the quality of future decisions by making previous decisions easier to retrieve, inspect, and improve.
