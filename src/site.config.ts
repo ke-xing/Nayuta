@@ -17,6 +17,8 @@ export const siteMeta = {
     // links: ['GitHub: github.com/ke-xing', 'Focus: World Models, Visual Memory'],
   },
   categoryDescriptions: {
+    'AI Resource Collection':
+      'Curated papers, repos, demos, and research notes for world models, video generation, and adjacent AI systems.',
     'Engineering Systems':
       'Architecture, deployment, reliability, and system-level decisions that influence long-term velocity.',
     'Editorial Strategy':
